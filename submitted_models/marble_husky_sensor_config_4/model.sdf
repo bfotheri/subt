@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <sdf version="1.6">
-  <model name="marble_husky_sensor_config_3">
+  <model name="marble_husky_sensor_config_4">
     <link name="base_link">
       <pose frame="">0 0 0 0 -0 0</pose>
       <inertial>
@@ -424,7 +424,7 @@
         </sensor>
 
         <visual name="camera_front_visual">
-            <pose>0.10 0 0.013 0 0 0</pose>
+            <pose>0.158 0.0 0.0324 0 0 0</pose>
             <geometry>
                 <box>
                     <size>0.02 0.02 0.02</size>
@@ -432,7 +432,7 @@
             </geometry>
         </visual>
         <sensor name="camera_front" type="camera">
-            <pose>0.12 0.0 0.013 0 0 0</pose>
+            <pose>0.158 0.0 0.0324 0 0 0</pose>
             <always_on>1</always_on>
             <update_rate>15</update_rate>
             <camera name="camera_front">
@@ -477,7 +477,7 @@
         </sensor>
 
         <visual name="camera_back_visual">
-            <pose>-0.10 0 0.013 0 0 0</pose>
+            <pose>-0.158 0.0 0.0324 0 0 0</pose>
             <geometry>
                 <box>
                     <size>0.02 0.02 0.02</size>
@@ -485,7 +485,7 @@
             </geometry>
         </visual>
         <sensor name="camera_back" type="camera">
-            <pose>-0.12 0.0 0.013 0 0 3.14159</pose>
+            <pose>-0.158 0.0 0.0324 0 0 3.14159</pose>
             <always_on>1</always_on>
             <update_rate>15</update_rate>
             <camera name="camera_back">
