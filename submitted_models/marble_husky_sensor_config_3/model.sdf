@@ -182,6 +182,10 @@
         </geometry>
       </visual>
 
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
       <!-- Based on RPLidar S1 -->
       <sensor name="planar_laser" type="gpu_ray">
           <pose>0.485 0 0.166 0 -0 0</pose>
@@ -257,7 +261,8 @@
         <visualize>0</visualize>
         <pose frame="">0.44 0 0.41 0 0.5236 0</pose>
       </sensor>
-
+      <gravity>1</gravity>
+      <velocity_decay/>
     </link>
 
     <link name="sensor_head_link">
@@ -281,7 +286,7 @@
             <size>0.1 0.1 0.1</size>
           </box>
         </geometry>
-
+      </visual>
         <sensor name="imu_sensor" type="imu">
           <always_on>1</always_on>
           <update_rate>50</update_rate>
@@ -419,7 +424,7 @@
         </sensor>
 
         <visual name="camera_front_visual">
-            <pose>0.12 0 0.013 0 0 0</pose>
+            <pose>0.10 0 0.013 0 0 0</pose>
             <geometry>
                 <box>
                     <size>0.02 0.02 0.02</size>
@@ -472,7 +477,7 @@
         </sensor>
 
         <visual name="camera_back_visual">
-            <pose>-0.12 0 0.013 0 0 0</pose>
+            <pose>-0.10 0 0.013 0 0 0</pose>
             <geometry>
                 <box>
                     <size>0.02 0.02 0.02</size>
@@ -480,7 +485,7 @@
             </geometry>
         </visual>
         <sensor name="camera_back" type="camera">
-            <pose>-0.12 0.0 0.013 0 0 0</pose>
+            <pose>-0.12 0.0 0.013 0 0 3.14159</pose>
             <always_on>1</always_on>
             <update_rate>15</update_rate>
             <camera name="camera_back">
@@ -525,8 +530,8 @@
         </sensor>
     </link>
     <joint name="sensor_head_joint" type="fixed">
-      <parent link="base_link"/>
-      <child link="sensor_head_link"/>
+      <child>sensor_head_link</child>
+      <parent>base_link</parent>
     </joint>
 
     <link name="front_left_wheel_link">
