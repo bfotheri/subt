@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <sdf version="1.6">
-  <model name="marble_hd2_sensor_config_3">
+  <model name="marble_hd2_sensor_config_4">
     <link name="base_link">
       <pose frame="">0 0 0 0 -0 0</pose>
       <inertial>
@@ -154,15 +154,15 @@
           <specular>1.0 1.0 1.0</specular>
           <!-- <pbr>
             <metal>
-              <albedo_map>model://MARBLE_HD2_SENSOR_CONFIG_3/materials/textures/HD2_Albedo.png</albedo_map>
-              <metalness_map>model://MARBLE_HD2_SENSOR_CONFIG_3/materials/textures/HD2_Metalness.png</metalness_map>
-              <roughness_map>model://MARBLE_HD2_SENSOR_CONFIG_3/materials/textures/HD2_Roughness.png</roughness_map>
+              <albedo_map>model://marble_hd2_sensor_config_4/materials/textures/HD2_Albedo.png</albedo_map>
+              <metalness_map>model://marble_hd2_sensor_config_4/materials/textures/HD2_Metalness.png</metalness_map>
+              <roughness_map>model://marble_hd2_sensor_config_4/materials/textures/HD2_Roughness.png</roughness_map>
             </metal>
           </pbr> -->
           <!-- fallback to script if no PBR support-->
           <!-- <script>
-            <uri>model://MARBLE_HD2_SENSOR_CONFIG_3/materials/scripts/</uri>
-            <uri>model://MARBLE_HD2_SENSOR_CONFIG_3/materials/textures/</uri>
+            <uri>model://marble_hd2_sensor_config_4/materials/scripts/</uri>
+            <uri>model://marble_hd2_sensor_config_4/materials/textures/</uri>
             <name>HD/HD2_Diffuse</name>
           </script> -->
         </material>
@@ -372,7 +372,7 @@
         </visual>
 
         <!-- Bottom cylinder of Vertical Ouster/Velodyne 3D Lidar -->
-        <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_13">
+        <!-- <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_13">
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
           <geometry>
             <mesh>
@@ -380,9 +380,9 @@
               <uri>meshes/VLP16_base_1.dae</uri>
             </mesh>
           </geometry>
-        </visual>
+        </visual> -->
         <!-- Top cylinder of Vertical Ouster/Velodyne 3D Lidar -->
-        <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_14">
+        <!-- <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_14">
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
           <geometry>
             <mesh>
@@ -390,9 +390,9 @@
               <uri>meshes/VLP16_base_2.dae</uri>
             </mesh>
           </geometry>
-        </visual>
+        </visual> -->
         <!-- Main cylinder of Vertical Ouster/Velodyne 3D Lidar -->
-        <visual name="base_link_fixed_joint_lump__velodyne_visual_15">
+        <!-- <visual name="base_link_fixed_joint_lump__velodyne_visual_15">
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
           <geometry>
             <mesh>
@@ -400,8 +400,8 @@
               <uri>meshes/VLP16_scan.dae</uri>
             </mesh>
           </geometry>
-        </visual>
-        <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs)-->
+        </visual> -->
+        <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs) -->
         <sensor name="horiz_laser" type="gpu_lidar">
           <visualize>0</visualize>
           <update_rate>20</update_rate>
@@ -437,14 +437,12 @@
         </sensor>
 
         <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs)-->
-        <sensor name="vert_laser" type="gpu_lidar">
+        <!-- <sensor name="vert_laser" type="gpu_lidar">
           <visualize>0</visualize>
           <update_rate>20</update_rate>
           <lidar>
             <scan>
               <horizontal>
-                <!-- Resolution can't be above 16k, see
-                https://bitbucket.org/ignitionrobotics/ign-sensors/issues/8 -->
                 <samples>1024</samples>
                 <resolution>1</resolution>
                 <min_angle>-3.1459</min_angle>
@@ -469,7 +467,7 @@
             </noise>
           </lidar>
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
-        </sensor>
+        </sensor> -->
 
         <visual name="camera_front_visual">
             <pose>0.10 0 0.013 0 0 0</pose>
@@ -523,7 +521,58 @@
                 </noise>
             </camera>
         </sensor>
-
+        <visual name="camera_left_visual">
+             <pose>0.0 0.158 0.0324 0 0 1.5708</pose>
+            <geometry>
+                <box>
+                    <size>0.04 0.04 0.04</size>
+                </box>
+            </geometry>
+        </visual>
+        <sensor name="camera_left" type="camera">
+            <pose>0.0 0.158 0.0324 0 0 1.5708</pose>
+            <always_on>1</always_on>
+            <update_rate>15</update_rate>
+            <camera name="camera_left">
+                <!--<cameraInfoTopicName>camera_info</cameraInfoTopicName>-->
+                <!--<hackBaseline>0.07</hackBaseline>-->
+                <horizontal_fov>1.0472</horizontal_fov>
+                <lens>
+                    <intrinsics>
+                        <!-- fx = fy = width / ( 2 * tan (hfov / 2 ) ) -->
+                        <fx>1108.5</fx>
+                        <fy>1108.5</fy>
+                        <!-- cx = ( width + 1 ) / 2 -->
+                        <cx>640.5</cx>
+                        <!-- cy = ( height + 1 ) / 2 -->
+                        <cy>480.5</cy>
+                        <s>0</s>
+                    </intrinsics>
+                </lens>
+                <distortion>
+                    <k1>0.0</k1>
+                    <k2>0.0</k2>
+                    <k3>0.0</k3>
+                    <p1>0.0</p1>
+                    <p2>0.0</p2>
+                    <center>0.5 0.5</center>
+                </distortion>
+                <image>
+                    <width>1280</width>
+                    <height>960</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.01</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+        </sensor>
         <visual name="camera_back_visual">
             <pose>-0.10 0 0.013 0 0 0</pose>
             <geometry>
@@ -576,7 +625,60 @@
                 </noise>
             </camera>
         </sensor>
+        <visual name="camera_right_visual">
+            <pose>0.0 -0.158 0.0324 0 0 -1.5708</pose>
+            <geometry>
+                <box>
+                    <size>0.04 0.04 0.04</size>
+                </box>
+            </geometry>
+        </visual>
+        <sensor name="camera_right" type="camera">
+            <pose>0.0 -0.158 0.0324 0 0 -1.5708</pose>
+            <always_on>1</always_on>
+            <update_rate>15</update_rate>
+            <camera name="camera_right">
+                <!--<cameraInfoTopicName>camera_info</cameraInfoTopicName>-->
+                <!--<hackBaseline>0.07</hackBaseline>-->
+                <horizontal_fov>1.0472</horizontal_fov>
+                <lens>
+                    <intrinsics>
+                        <!-- fx = fy = width / ( 2 * tan (hfov / 2 ) ) -->
+                        <fx>1108.5</fx>
+                        <fy>1108.5</fy>
+                        <!-- cx = ( width + 1 ) / 2 -->
+                        <cx>640.5</cx>
+                        <!-- cy = ( height + 1 ) / 2 -->
+                        <cy>480.5</cy>
+                        <s>0</s>
+                    </intrinsics>
+                </lens>
+                <distortion>
+                    <k1>0.0</k1>
+                    <k2>0.0</k2>
+                    <k3>0.0</k3>
+                    <p1>0.0</p1>
+                    <p2>0.0</p2>
+                    <center>0.5 0.5</center>
+                </distortion>
+                <image>
+                    <width>1280</width>
+                    <height>960</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.01</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+        </sensor>
     </link>
+  
     <joint name="sensor_head_joint" type="fixed">
       <child>sensor_head_link</child>
       <parent>base_link</parent>
