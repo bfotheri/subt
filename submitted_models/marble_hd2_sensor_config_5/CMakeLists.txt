@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(marble_hd2_sensor_config_4)
+project(marble_hd2_sensor_config_5)
 
 find_package(catkin REQUIRED)
 

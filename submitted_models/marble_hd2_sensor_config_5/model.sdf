@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <sdf version="1.6">
-  <model name="marble_hd2_sensor_config_4">
+  <model name="marble_hd2_sensor_config_5">
     <link name="base_link">
       <pose frame="">0 0 0 0 -0 0</pose>
       <inertial>
@@ -154,15 +154,15 @@
           <specular>1.0 1.0 1.0</specular>
           <!-- <pbr>
             <metal>
-              <albedo_map>model://marble_hd2_sensor_config_4/materials/textures/HD2_Albedo.png</albedo_map>
-              <metalness_map>model://marble_hd2_sensor_config_4/materials/textures/HD2_Metalness.png</metalness_map>
-              <roughness_map>model://marble_hd2_sensor_config_4/materials/textures/HD2_Roughness.png</roughness_map>
+              <albedo_map>model://marble_hd2_sensor_config_5/materials/textures/HD2_Albedo.png</albedo_map>
+              <metalness_map>model://marble_hd2_sensor_config_5/materials/textures/HD2_Metalness.png</metalness_map>
+              <roughness_map>model://marble_hd2_sensor_config_5/materials/textures/HD2_Roughness.png</roughness_map>
             </metal>
           </pbr> -->
           <!-- fallback to script if no PBR support-->
           <!-- <script>
-            <uri>model://marble_hd2_sensor_config_4/materials/scripts/</uri>
-            <uri>model://marble_hd2_sensor_config_4/materials/textures/</uri>
+            <uri>model://marble_hd2_sensor_config_5/materials/scripts/</uri>
+            <uri>model://marble_hd2_sensor_config_5/materials/textures/</uri>
             <name>HD/HD2_Diffuse</name>
           </script> -->
         </material>
@@ -372,7 +372,7 @@
         </visual>
 
         <!-- Bottom cylinder of Vertical Ouster/Velodyne 3D Lidar -->
-        <!-- <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_13">
+        <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_13">
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
           <geometry>
             <mesh>
@@ -380,9 +380,9 @@
               <uri>meshes/VLP16_base_1.dae</uri>
             </mesh>
           </geometry>
-        </visual> -->
+        </visual>
         <!-- Top cylinder of Vertical Ouster/Velodyne 3D Lidar -->
-        <!-- <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_14">
+        <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_14">
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
           <geometry>
             <mesh>
@@ -390,9 +390,9 @@
               <uri>meshes/VLP16_base_2.dae</uri>
             </mesh>
           </geometry>
-        </visual> -->
+        </visual>
         <!-- Main cylinder of Vertical Ouster/Velodyne 3D Lidar -->
-        <!-- <visual name="base_link_fixed_joint_lump__velodyne_visual_15">
+        <visual name="base_link_fixed_joint_lump__velodyne_visual_15">
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
           <geometry>
             <mesh>
@@ -400,7 +400,7 @@
               <uri>meshes/VLP16_scan.dae</uri>
             </mesh>
           </geometry>
-        </visual> -->
+        </visual>
         <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs) -->
         <sensor name="horiz_laser" type="gpu_lidar">
           <visualize>0</visualize>
@@ -437,7 +437,7 @@
         </sensor>
 
         <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs)-->
-        <!-- <sensor name="vert_laser" type="gpu_lidar">
+        <sensor name="vert_laser" type="gpu_lidar">
           <visualize>0</visualize>
           <update_rate>20</update_rate>
           <lidar>
@@ -467,7 +467,7 @@
             </noise>
           </lidar>
           <pose frame="">0.158 0 -0.086 0 1.5708 0</pose>
-        </sensor> -->
+        </sensor>
 
         <visual name="camera_front_visual">
             <pose>0.10 0 0.013 0 0 0</pose>
