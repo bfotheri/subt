@@ -36,15 +36,11 @@ fi
 
 user_id=$(id -u)
 image_name=$(basename $1)
-image_plus_tag=$image_name:$(date +%Y_%b_%d_%H%M)
-# mercurial adds a + symbol if there are uncomitted changes in the repo
-# that will break docker tag syntax
-hg_id=$(hg id -i | tr -d '+')
+image_plus_tag=$image_name:latest-$(date +%F_%H%M)
 
 shift
 
-docker build --rm -t $image_plus_tag --build-arg user_id=$user_id "$@" $DIR/$image_name
+docker build --rm -t $image_plus_tag --build-arg user_id=$user_id "$@" -f $DIR/$image_name/Dockerfile .
 docker tag $image_plus_tag $image_name:latest
-docker tag $image_plus_tag $image_name:$hg_id
 
-echo "Built $image_plus_tag and tagged as $image_name:latest and $image_name:$hg_id"
+echo "Built $image_plus_tag and tagged as $image_name:latest"

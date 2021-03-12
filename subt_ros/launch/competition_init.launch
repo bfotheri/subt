@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
 <launch>
 
+  <env name="IGN_TRANSPORT_TOPIC_STATISTICS" value="1"/>
+
   <arg name="world_name"/>
   <arg name="robot_names" default=""/>
   <arg name="enable_ground_truth" default="0"/>
 
+  <param name="/enable_statistics" value="true"/>
   <param name="/use_sim_time" value="true"/>
   <param name="/world_name" value="$(arg world_name)"/>
   <rosparam param="/robot_names" subst_value='true'>$(arg robot_names)</rosparam>
@@ -17,6 +20,17 @@
     type="subt_ros_relay"
     name="subt_ros_relay"/>
 
+  <node
+    pkg="subt_ros"
+    type="bridge_logger"
+    name="bridge_logger"/>
+
+
+  <node
+    pkg="subt_ros"
+    type="rostopic_stats_logger.sh"
+    name="rostopic_stats_logger"/>
+
   <group if="$(arg enable_ground_truth)">
     <!-- In the case that ground truth is enabled, also relay the /set_pose
          service, which allows teleportation of models in the sim environment.
@@ -27,11 +41,6 @@
       type="set_pose_relay"
       name="set_pose_relay"/>
   </group>
-
-  <!-- rosbag a /robot_data topic which can be used by a team to record
-       custom data -->
-  <node pkg="rosbag" type="record" name="rosbag_robot_data"
-        args="record --split --size=1000 --max-splits=2 -O $(env HOME)/.ros/robot_data.bag -e '/robot_data(.*)'"/>
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="tf_world_static" args="0 0 0 0 0 0 world $(arg world_name)"/>
 
